@@ -25,4 +25,10 @@ module.exports = {
     services.create(post);
     ctx.body = post;
   },
+
+  delete: function (ctx) {
+    const { id } = ctx.params;
+    const post = services.delete(id);
+    ctx.body = post;
+  }
 };

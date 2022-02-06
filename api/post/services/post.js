@@ -27,8 +27,13 @@ module.exports = {
   findOne: function (id) {
     return posts.find(post => post.id === id);
   },
-  
+
   create: function (post) {
     return posts.push(post);
   },
+
+  delete: function (id) {
+    posts = [...posts.filter(post => post.id !== id)];
+    return posts;
+  }
 };
