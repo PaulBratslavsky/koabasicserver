@@ -26,6 +26,7 @@ router.get("/posts", (ctx) => post.find(ctx));
 router.get("/posts/:id", (ctx) => post.findOne(ctx));
 router.post("/posts", (ctx) => post.create(ctx));
 router.delete("/posts/:id", (ctx) => post.delete(ctx));
+router.put("/posts/:id", (ctx) => post.update(ctx));
 
 router.get("/comments", (ctx) => {
   ctx.body = comments;

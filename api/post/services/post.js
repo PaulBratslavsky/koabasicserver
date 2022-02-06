@@ -35,5 +35,11 @@ module.exports = {
   delete: function (id) {
     posts = [...posts.filter(post => post.id !== id)];
     return posts;
+  },
+
+  update: function (id, post) {
+    console.log(id, post);
+    posts = [...posts.map(item => item.id === id ? { ...item, ...post } : item)];
+    return posts;
   }
 };

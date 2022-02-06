@@ -30,5 +30,11 @@ module.exports = {
     const { id } = ctx.params;
     const post = services.delete(id);
     ctx.body = post;
+  },
+
+  update: function (ctx) {
+    const { id } = ctx.params;
+    const post = services.update(id, ctx.request.body);
+    ctx.body = post;
   }
 };
