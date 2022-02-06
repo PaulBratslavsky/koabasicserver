@@ -19,9 +19,9 @@ app.use(async (ctx, next) => {
 
 
 // generate routes dynamically
-postRoutes.forEach((element) => {
-  return router[element.method](element.route, async (ctx) =>
-    element.controller[element.type](ctx)
+postRoutes.forEach((route) => {
+  return router[route.method](route.route, async (ctx) =>
+    route.controller[route.type](ctx)
   );
 });
 
