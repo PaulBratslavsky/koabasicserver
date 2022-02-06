@@ -5,7 +5,6 @@ const postRoutes = require("./api/post/config/routes.js");
 
 const app = new Koa();
 const router = new Router();
-const PORT = 4000;
 
 app.use(bodyParser());
 app.use(router.routes());
@@ -26,9 +25,8 @@ postRoutes.forEach((element) => {
   );
 });
 
-
+const PORT = 4000;
 app.listen(PORT);
-
 console.log(`Server is listening on port ${PORT}`);
 
 
