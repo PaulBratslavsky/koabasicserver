@@ -1,40 +1,41 @@
 const services = require("../services/post.js");
-const uniqueId = require("uuid").v4;
 
 module.exports = {
-  find: function (ctx) {
-    const posts = services.find();
-    ctx.body = posts;
+  find: async function (ctx) {
+    const response = await services.find();
+    ctx.body = response;
   },
 
-  findOne: function (ctx) {
+  findOne: async function (ctx) {
     const { id } = ctx.params;
-    const post = services.findOne(id);
-    ctx.body = post;
+    if (!id) ctx.throw(400, "Please provide an id");
+    const response = await services.findOne(id);
+    ctx.body = response;
   },
 
-  create: function (ctx) {
+  create: async function (ctx) {
     const post = ctx.request.body;
-    post.id = uniqueId();
 
     if (post === undefined) ctx.throw(400, "Post is undefined");
     if (!post.userId) ctx.throw(400, "Invalid post: missing userId");
     if (!post.title) ctx.throw(400, "Invalid post: missing title");
     if (!post.content) ctx.throw(400, "Invalid post: missing content");
 
-    services.create(post);
-    ctx.body = post;
+    const response = await services.create(post);
+    ctx.body = response;
   },
 
-  delete: function (ctx) {
+  delete: async function (ctx) {
     const { id } = ctx.params;
-    const post = services.delete(id);
-    ctx.body = post;
+    if (!id) ctx.throw(400, "Please provide an id");
+    const response = await services.delete(id);
+    ctx.body = response;
   },
 
-  update: function (ctx) {
+  update: async function (ctx) {
     const { id } = ctx.params;
-    const post = services.update(id, ctx.request.body);
-    ctx.body = post;
-  }
+    if (!id) ctx.throw(400, "Please provide an id");
+    const response = await services.update(id, ctx.request.body);
+    ctx.body = response;
+  },
 };

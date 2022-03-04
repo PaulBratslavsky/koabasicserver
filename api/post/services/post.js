@@ -1,3 +1,6 @@
+const mongoose = require("mongoose");
+const Post = require("../models/post.js");
+
 let posts = [
   {
     id: "1",
@@ -17,29 +20,26 @@ let posts = [
     content: "Please contact me at my email.",
     userId: "1",
   },
-]
+];
 
 module.exports = {
-  find: function () {
-    return posts;
+  find: async function () {
+    return await Post.find();
   },
 
-  findOne: function (id) {
-    return posts.find(post => post.id === id);
+  findOne: async function (id) {
+    return await Post.findById(mongoose.Types.ObjectId(id));
   },
 
-  create: function (post) {
-    return posts.push(post);
+  create: async function (post) {
+    return await Post.create(post);
   },
 
-  delete: function (id) {
-    posts = [...posts.filter(post => post.id !== id)];
-    return posts;
+  delete: async function (id) {
+    return await Post.deleteOne(mongoose.Types.ObjectId(id));
   },
 
-  update: function (id, post) {
-    console.log(id, post);
-    posts = [...posts.map(item => item.id === id ? { ...item, ...post } : item)];
-    return posts;
-  }
+  update: async function (id, post) {
+    return await Post.findByIdAndUpdate(mongoose.Types.ObjectId(id), post);
+  },
 };
