@@ -1,4 +1,6 @@
 require("dotenv").config();
+const knex = require('./db/connection.js')
+
 
 const Koa = require("koa");
 const Router = require("koa-router");
@@ -16,9 +18,9 @@ async function start() {
 
   // set up routes
   postRoutes.forEach((route) => {
-    return router[route.method](route.route, async (ctx) =>
-      route.controller[route.type](ctx)
-    );
+    return router[route.method](route.route, async (ctx) => {
+      return route.controller[route.type](ctx, knex);
+    });
   });
 
   // start the server

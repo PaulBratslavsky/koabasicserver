@@ -1,13 +1,12 @@
-// const mongoose = require("mongoose");
-const knex = require('../../../db/connection.js');
-const Post = knex('posts');
 
 module.exports = {
-  find: async function () {
+  find: async function (knex) {
+    const Post = knex('posts');
     return await Post.select('*');
   },
 
-  findOne: async function (id) {
+  findOne: async function (knex, id) {
+    const Post = knex('posts');
     return await Post.select('*').where({ id });
   },
 

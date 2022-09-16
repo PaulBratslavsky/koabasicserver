@@ -1,19 +1,20 @@
 const services = require("../services/post.js");
 
 module.exports = {
-  find: async function (ctx) {
-    const response = await services.find();
+  find: async function (ctx, knex) {
+    const response = await services.find(knex);
     ctx.body = response;
   },
 
-  findOne: async function (ctx) {
+  findOne: async function (ctx, knex) {
+    console.log(ctx.params, "from findone");
     const { id } = ctx.params;
     if (!id) ctx.throw(400, "Please provide an id");
-    const response = await services.findOne(id);
+    const response = await services.findOne(knex, id);
     ctx.body = response;
   },
 
-  create: async function (ctx) {
+  create: async function (ctx, knex) {
     const post = ctx.request.body;
 
     if (post === undefined) ctx.throw(400, "Post is undefined");
