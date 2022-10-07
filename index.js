@@ -1,5 +1,6 @@
 require("dotenv").config();
 const knex = require('./db/connection.js')
+const fs = require('fs-extra');
 
 const { Liquid } = require('liquidjs');
 const { resolve } = require('path');
@@ -22,6 +23,18 @@ const { generateController } = require("./factories/generate-controller");
 const { generateService } = require("./factories/generate-service");
 const { generateRoutes } = require("./factories/generate-routes.js")
 
+async function readDirectoryFile(path = "") {
+  const exists = await fs.exists(path);
+  if (!exists) console.log("File does not exist");
+
+  try {
+    const output = await fs.readFile(path, "utf8");
+    console.log(output)
+    return output;
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 async function start() {
   // create the koa app
@@ -47,6 +60,7 @@ async function start() {
   generateRoutes(userRoutes, router, knex);
   generateRoutes(categoryRoutes, router, knex);
 
+  readDirectoryFile('api/user/controllers/user.js')
 
   // start the server
   const PORT = 4000;

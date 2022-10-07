@@ -7,7 +7,10 @@ const fs = require('fs-extra');
 module.exports = {
   async generateController(apiPath, apiName, liquidEngine) {
     const controllerPath = join(apiPath, apiName, "controllers", `${apiName}.js`);
+    console.log(controllerPath, "path")
 
+    const exists = await fs.exists(controllerPath);
+    if (exists) return null;
     try {
       // Compile the template
       const template = liquidEngine.renderFileSync('core-controller', {

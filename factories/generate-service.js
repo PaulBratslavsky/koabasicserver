@@ -7,6 +7,9 @@ const fs = require('fs-extra');
 module.exports = {
   async generateService(apiPath, apiName, liquidEngine) {
     const servicePath = join(apiPath, apiName, "services", `${apiName}.js`);
+    
+    const exists = await fs.exists(servicePath);
+    if (exists) return null;
 
     try {
       // Compile the template
