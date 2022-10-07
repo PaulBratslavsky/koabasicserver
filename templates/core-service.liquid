@@ -1,12 +1,12 @@
 
 module.exports = {
   find: async function (knex) {
-    const Query = knex('posts');
+    const Query = knex('{{ table }}s');
     return await Query.select('*');
   },
 
   findOne: async function (knex, id) {
-    const Query = knex('posts');
+    const Query = knex('{{ table }}s');
     return await Query.select('*').where({ id });
   },
 

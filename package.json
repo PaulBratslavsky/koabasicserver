@@ -15,11 +15,14 @@
     "and": "^0.0.3",
     "better-sqlite3": "^7.6.2",
     "dotenv": "^16.0.0",
+    "fs-extra": "^10.1.0",
+    "graceful-fs": "^4.2.10",
     "knex": "^2.1.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-logger": "^3.2.1",
     "koa-router": "^10.1.1",
+    "liquidjs": "^9.42.0",
     "pg": "^8.8.0",
     "uuid": "^8.3.2"
   }

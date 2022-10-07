@@ -1,4 +1,4 @@
-const services = require("../services/post.js");
+const services = require("../services/category.js");
 
 // TODO: Eventualy use facotry functino to generate the controllers.
 
@@ -17,11 +17,11 @@ module.exports = {
   },
 
   create: async function (ctx, knex) {
-    const post = ctx.request.body;
+    const category = ctx.request.body;
 
-    if (post === undefined) ctx.throw(400, "post is undefined");
+    if (category === undefined) ctx.throw(400, "category is undefined");
 
-    const response = await services.create(post);
+    const response = await services.create(category);
     ctx.body = response;
   },
 
