@@ -32,6 +32,7 @@ async function start() {
   app.use(router.routes());
 
   // TODO: Create function to generate config from json
+  // TODO: Create function to check if file exists don't overwrite
 
   generateService("api", "user", liquidEngine);
   generateService("api", "post", liquidEngine);
