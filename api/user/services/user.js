@@ -9,16 +9,4 @@ module.exports = {
     const Query = knex('users');
     return await Query.select('*').where({ id });
   },
-
-  // create: async function (Query) {
-  //   return await Query.create(Query);
-  // },
-
-  // delete: async function (id) {
-  //   return await Query.deleteOne(mongoose.Types.ObjectId(id));
-  // },
-
-  // update: async function (id, Query) {
-  //   return await Query.findByIdAndUpdate(mongoose.Types.ObjectId(id), Query);
-  // },
-};
+}

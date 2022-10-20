@@ -36,6 +36,8 @@ async function readDirectoryFile(path = "") {
   }
 }
 
+
+
 async function start() {
   // create the koa app
   const app = new Koa();
@@ -44,8 +46,8 @@ async function start() {
   app.use(bodyParser());
   app.use(router.routes());
 
-  // TODO: Create function to generate config from json
-  // TODO: Create function to check if file exists don't overwrite
+  // TODO: Create function to generate db based on schema 
+  // TODO: Create function to generate config from 
 
   generateService("api", "user", liquidEngine);
   generateService("api", "post", liquidEngine);
