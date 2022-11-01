@@ -17,7 +17,7 @@ async function getController(route) {
 }
 
 module.exports = {
-  generateRoutes(routes, router, knex) {
+  async generateRoutes(routes, router, knex) {
     routes.forEach(async (route) => {
       const controller = await getController(route)
       return router[route.method](route.route, function (ctx) {

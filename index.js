@@ -19,9 +19,9 @@ const postRoutes = require("./api/post/config/routes.js");
 const userRoutes = require("./api/user/config/routes.js");
 const categoryRoutes = require("./api/category/config/routes.js");
 
-const { generateController } = require("./factories/generate-controller");
+const { generateRoutes } = require("./factories/generate-routes.js");
 const { generateService } = require("./factories/generate-service");
-const { generateRoutes } = require("./factories/generate-routes.js")
+const { generateController } = require("./factories/generate-controller");
 
 async function readDirectoryFile(path = "") {
   const exists = await fs.exists(path);

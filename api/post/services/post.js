@@ -10,6 +10,11 @@ module.exports = {
     return await Query.select('*').where({ id });
   },
 
+  delete: async function (knex, id) {
+    console.log(id, "from delete service");
+    return null 
+  },
+
   // create: async function (Query) {
   //   return await Query.create(Query);
   // },
